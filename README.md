@@ -13,3 +13,7 @@ To solve this issue, you need to break the circular dependency between these cla
 In this implementation, the Engine class accepts a carBody object in its constructor, while the CarBody class accepts an engine object in its constructor. The Car class accepts both carBody and engine objects in its constructor.
 
 To create a new Car object, we can first create a new instance of the CarBody class and pass it an instance of the Engine class. We can then create a new instance of the Engine class and pass it the CarBody object. Finally, we can create a new instance of the Car class and pass it both the CarBody and Engine objects. This allows us to break the circular dependency between these classes and avoid the "not a constructor" error.
+
+### thoughts
+
+we should check if data are ready and data a shoudn't be has dependecies from data b. Need to create a essence that will check that and send data.
