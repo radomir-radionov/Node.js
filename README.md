@@ -1,6 +1,6 @@
 # desc
 
-#### TypeError: CarBody is not a constructor
+### TypeError: CarBody is not a constructor
 
 The error you are seeing is because of a circular dependency between the Car and CarBody classes.
 
@@ -8,7 +8,7 @@ Specifically, the Car class imports the CarBody class, while the CarBody class i
 
 To solve this issue, you need to break the circular dependency between these classes. One way to do this is by using Dependency Injection.
 
-#### solve
+### solve
 
 In this implementation, the Engine class accepts a carBody object in its constructor, while the CarBody class accepts an engine object in its constructor. The Car class accepts both carBody and engine objects in its constructor.
 
