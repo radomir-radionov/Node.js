@@ -1,10 +1,8 @@
-const Engine = require("./engine");
-
 class CarBody {
   parts = [];
 
-  constructor() {
-    this.engine = new Engine();
+  constructor(engine) {
+    this.engine = engine;
   }
 
   install() {

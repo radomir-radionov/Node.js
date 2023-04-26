@@ -1,10 +1,7 @@
-const CarBody = require("./car-body");
-const Engine = require("./engine");
-
 class Car {
-  constructor() {
-    this.carBody = new CarBody();
-    this.engine = new Engine();
+  constructor(carBody, engine) {
+    this.carBody = carBody;
+    this.engine = engine;
   }
 
   create() {
