@@ -1,19 +1,37 @@
-# desc
+task 1
 
-### TypeError: CarBody is not a constructor
+напиши программу которая создаст в текущей директории файл info.txt, в который запишет посточно информацию о:
 
-The error you are seeing is because of a circular dependency between the Car and CarBody classes.
+- вашей операционной системе
+- пользователя из под которого запускается программа
+- колл-ве ядер вашего компьютера
+- колл-во свободной оперативной памяти в мегабайтах
+- частота ядер вашего компьютера
+- версии операционной симтемы
+  use node.js
 
-Specifically, the Car class imports the CarBody class, while the CarBody class imports the Engine class, which in turn imports the CarBody class again. This creates a circular dependency between these classes, which can cause issues during the runtime.
+run command
 
-To solve this issue, you need to break the circular dependency between these classes. One way to do this is by using Dependency Injection.
+```
+node src/cpuInfo.js
+```
 
-### solve
+task 2
 
-In this implementation, the Engine class accepts a carBody object in its constructor, while the CarBody class accepts an engine object in its constructor. The Car class accepts both carBody and engine objects in its constructor.
+Напиши программу, которая читает все картинки из одной директории и складывает измененные картинки в другую.
+На вход програма получает в виде аргументов командной строки(argv) три аргумента:
 
-To create a new Car object, we can first create a new instance of the CarBody class and pass it an instance of the Engine class. We can then create a new instance of the Engine class and pass it the CarBody object. Finally, we can create a new instance of the Car class and pass it both the CarBody and Engine objects. This allows us to break the circular dependency between these classes and avoid the "not a constructor" error.
+- размер в который должен произойти ресапйз в формате высота ширина, например 320x480 или 120x140
+- полный путь к директории с которой считать все картаники( не забудь отфильтровать файлы, там могут находиться не только jpg, png, но и например txt)
+- полный путь к диреткории в которую выгрузить картинки(перед выгрузкой почисти директорию от существующих в ней файлов)
 
-### thoughts
+в качестве ресайзера возьми https://www.npmjs.com/package/sharp
 
-we should check if data are ready and data a shoudn't be has dependecies from data b. Need to create a essence that will check that and send data.
+Пример запуска: node resizer.js 480x600 resizer/input_dir resizer/output_dir  
+В результате все картинки из input_dir все картинки появляются в output_dir, но уже с изменненный размером
+
+run command
+
+```
+node src/resizer.js 480x600 src/images/input src/images/output
+```
