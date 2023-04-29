@@ -1,11 +1,13 @@
 const fs = require("fs");
 const path = require("path");
 const sharp = require("sharp");
+require("dotenv").config();
+
+const size = process.env.IMAGE_SIZE;
+const inputDir = process.env.IMAGE_INPUT_DIR;
+const outputDir = process.env.IMAGE_OUTPUT_DIR;
 
 const resizeImages = () => {
-  // получаем аргументы командной строки
-  const [, , size, inputDir, outputDir] = process.argv;
-
   // разбиваем размер на ширину и высоту
   const [width, height] = size.split("x");
 
