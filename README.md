@@ -37,3 +37,7 @@ npm run translate
 npm run convert
 
 ```
+
+### task 3 (extract music from youtube video)
+
+Задача: написать программу для извлечения музыки из ссылок на ютуб видео и сохранения музыки в желаемой директории
