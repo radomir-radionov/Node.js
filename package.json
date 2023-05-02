@@ -1,11 +1,11 @@
 {
-  "name": "task3",
+  "name": "task5",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "resize": "node src/resizer.js",
-    "encode": "node src/encoder.js",
+    "translate": "node src/translator.js",
+    "convert": "node src/converterZip.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,6 +21,6 @@
   "homepage": "https://github.com/radomir-radionov/Node.js#readme",
   "dependencies": {
     "dotenv": "^16.0.3",
-    "sharp": "^0.32.1"
+    "free-translate": "^0.6.1"
   }
 }
