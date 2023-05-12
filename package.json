@@ -1,12 +1,11 @@
 {
-  "name": "task5",
+  "name": "task6",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "translate": "node src/translator.js",
-    "convert": "node src/converterZip.js",
-    "extract": "node src/extractorMusic.js",
+    "start": "node server.js",
+    "lesson": "node lesson/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,10 +18,5 @@
   "bugs": {
     "url": "https://github.com/radomir-radionov/Node.js/issues"
   },
-  "homepage": "https://github.com/radomir-radionov/Node.js#readme",
-  "dependencies": {
-    "dotenv": "^16.0.3",
-    "free-translate": "^0.6.1",
-    "ytdl-core": "^4.11.4"
-  }
+  "homepage": "https://github.com/radomir-radionov/Node.js#readme"
 }
