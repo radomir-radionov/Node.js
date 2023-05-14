@@ -1,7 +1,7 @@
 const { createReadStream, writeFile } = require("fs");
 const path = require("path");
 
-const dbJsonPath = path.resolve(process.cwd(), "src/services/catDB.json");
+const dbJsonPath = path.resolve(process.cwd(), "src/services/userDB.json");
 
 const readJSONAsync = (path) =>
   new Promise((resolve) => {
@@ -30,53 +30,53 @@ const writeJSONAsync = (path, data) => {
   });
 };
 
-exports.fetchAllCats = () => readJSONAsync(dbJsonPath);
+exports.fetchAllUsers = () => readJSONAsync(dbJsonPath);
 
-exports.fetchCatById = async (id) => {
-  const cats = await readJSONAsync(dbJsonPath);
+exports.fetchUserById = async (id) => {
+  const users = await readJSONAsync(dbJsonPath);
 
-  return cats.find((cat) => cat.id === id);
+  return users.find((user) => user.id === id);
 };
 
-exports.addNewCat = async (data) => {
-  const cats = await readJSONAsync(dbJsonPath);
+exports.addNewUser = async (data) => {
+  const users = await readJSONAsync(dbJsonPath);
 
-  cats.push(data);
+  users.push(data);
 
-  await writeJSONAsync(dbJsonPath, cats);
+  await writeJSONAsync(dbJsonPath, users);
 };
 
 exports.update = async (data) => {
-  const cats = await readJSONAsync(dbJsonPath);
-  const foundCatIndex = cats.findIndex((cat) => cat.id === data.id);
+  const users = await readJSONAsync(dbJsonPath);
+  const foundUserIndex = users.findIndex((user) => user.id === data.id);
 
-  if (foundCatIndex === -1) {
+  if (foundUserIndex === -1) {
     return false;
   }
 
-  cats[foundCatIndex] = data;
+  users[foundUserIndex] = data;
 
-  await writeJSONAsync(dbJsonPath, cats);
+  await writeJSONAsync(dbJsonPath, users);
 
   return true;
 };
 
 exports.delete = async (id) => {
-  const cats = await readJSONAsync(dbJsonPath);
-  let isCatWasFound = false;
+  const users = await readJSONAsync(dbJsonPath);
+  let isUserWasFound = false;
 
-  const filtredCats = cats.filter((cat) => {
-    if (cat.id !== id) {
+  const filtredUsers = users.filter((user) => {
+    if (user.id !== id) {
       return true;
     }
 
-    isCatWasFound = true;
+    isUserWasFound = true;
 
     return false;
   });
 
-  if (isCatWasFound) {
-    await writeJSONAsync(dbJsonPath, filtredCats);
+  if (isUserWasFound) {
+    await writeJSONAsync(dbJsonPath, filtredUsers);
 
     return true;
   }
