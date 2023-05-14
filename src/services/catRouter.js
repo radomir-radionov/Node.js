@@ -25,6 +25,17 @@ router.on("PUT", "/cat/:catId", async (req, res, { catId }) => {
   res.end(JSON.stringify(result));
 });
 
+router.all("/cat/:catId/addOwner", async (req, res, { catId }) => {
+  if (req.method === "PUT" || req.method === "POST") {
+    const result = await catController.addOwner(req, res, catId);
+
+    res.end(JSON.stringify(result));
+  } else {
+    res.writeHead(405, { "Content-Type": "text/plain" });
+    res.end("Method Not Allowed");
+  }
+});
+
 router.on("DELETE", "/cat/:catId", async (req, res, { catId }) => {
   const result = await catController.deleteCatById(res, catId);
 

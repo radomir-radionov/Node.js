@@ -83,3 +83,7 @@ exports.delete = async (id) => {
 
   return false;
 };
+
+exports.deleteOwner = async (data) => {
+  await writeJSONAsync(dbJsonPath, data);
+};

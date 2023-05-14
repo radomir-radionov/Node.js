@@ -1,4 +1,5 @@
 const userModel = require("../model/user");
+const catModel = require("../model/cat");
 const { v4: uuid } = require("uuid");
 
 const getNotFoundResponse = (res) => {
@@ -78,10 +79,21 @@ exports.updateUserById = async (req, res, userId) => {
 
 exports.deleteUserById = async (res, userId) => {
   const updateResult = await userModel.delete(userId);
+  const cats = await catModel.fetchAllCats();
 
   if (!updateResult) {
     return getNotFoundResponse(res);
   }
+
+  const modifiedCats = cats.map((cat) => {
+    if (cat.ownerId === userId) {
+      return { ...cat, ownerId: null };
+    } else {
+      return cat;
+    }
+  });
+
+  catModel.deleteOwner(modifiedCats);
 
   return {
     id: userId,

@@ -7,7 +7,6 @@ const readJSONAsync = (path) =>
   new Promise((resolve) => {
     const readStream = createReadStream(path);
     let result = "";
-
     readStream
       .on("data", (chunk) => {
         result += chunk.toString();

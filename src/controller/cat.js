@@ -1,3 +1,4 @@
+const userModel = require("../model/user");
 const catModel = require("../model/cat");
 const { v4: uuid } = require("uuid");
 
@@ -91,6 +92,42 @@ exports.updateCatById = async (req, res, catId) => {
   const updateResult = await catModel.update(updatedCat);
 
   if (!updateResult) {
+    return getNotFoundResponse(res);
+  }
+
+  return updatedCat;
+};
+
+exports.addOwner = async (req, res, catId) => {
+  const bodyData = await parseJsonBody(req);
+  const user = await userModel.fetchUserById(bodyData.id);
+  const cat = await catModel.fetchCatById(catId);
+
+  if (!user || !cat) {
+    console.log(1);
+    return getNotFoundResponse(res);
+  }
+
+  cat.ownerId = user.id;
+  const updatedCat = { ...cat };
+
+  if (user.pets?.length) {
+    const isExsitedPet = user.pets.some((pet) => pet.id === catId);
+
+    if (isExsitedPet) {
+      //TODO add another error
+      return getNotFoundResponse(res);
+    }
+
+    user.pets.push(updatedCat);
+  } else {
+    user.pets = [];
+    user.pets.push(updatedCat);
+  }
+
+  const updateCatResult = await catModel.update(updatedCat);
+  const updateUserResult = await userModel.update(user);
+  if (!updateCatResult || !updateUserResult) {
     return getNotFoundResponse(res);
   }
 
