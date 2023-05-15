@@ -4,5 +4,17 @@
         "login": "4856h6",
         "password": "$2b$10$0NXYIuhomrZ6WikjzvISM.tMyUIBrz9xOEZeQlVyB1vXkHjYrai6.",
         "id": "750d935d-1cd7-4863-af93-c0d249c41bad"
+    },
+    {
+        "name": "1",
+        "login": "1",
+        "password": "$2b$10$0NXYIuhomrZ6WikjzvISM.YJZfCKTLeHJHV8kVS9wi8NPRWaLoW..",
+        "id": "d5e7376b-464f-4805-942b-8201602e59a3"
+    },
+    {
+        "name": "user",
+        "login": "user",
+        "password": "$2b$10$0NXYIuhomrZ6WikjzvISM.V.GUMfVi0HLAUn/QF58Eml8yrlKrN7K",
+        "id": "b401cb61-e019-42f0-a995-5766c6cd509c"
     }
 ]

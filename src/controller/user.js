@@ -5,8 +5,16 @@ const { getNotFoundResponse } = require("../utils/getNotFoundResponse");
 const { parseJsonBody } = require("../utils/parseJsonBody");
 const { validateBodyCredentials } = require("../utils/validateBodyCredentials");
 const { createPasswordHash } = require("../utils/encription");
+const { encrypt, decrypt } = require("../services/json-encryption");
+const { encryptionKeys } = require("../constants/encryptionKeys");
+const createEncryptor = require("../utils/sync_enc");
 
-exports.getUsers = async () => {
+const encryptor = createEncryptor(
+  encryptionKeys.syncEncryptor.keyword,
+  encryptionKeys.syncEncryptor.salt
+);
+
+exports.getUsers = async (res) => {
   const users = await userModel.fetchAllUsers();
 
   if (!users.length) {
@@ -26,14 +34,22 @@ exports.getUserById = async (res, userId) => {
   return user;
 };
 
+exports.findUserByLogin = async (res, userLogin) => {
+  const user = await userModel.findUserByLogin(userLogin);
+
+  if (!user) {
+    return getNotFoundResponse(res);
+  }
+
+  return user;
+};
+
 exports.createUser = async (req, res) => {
   const newUserData = await parseJsonBody(req);
 
   validateBodyCredentials(res, newUserData);
 
-  console.log(1, newUserData.password);
   newUserData.password = await createPasswordHash(newUserData.password);
-  console.log(2, newUserData.password);
 
   newUserData.id = uuid();
   const createResult = await userModel.createNewUser(newUserData);
@@ -53,10 +69,19 @@ exports.createUser = async (req, res) => {
 
 exports.loginUser = async (req, res) => {
   const newUserBody = await parseJsonBody(req);
-
   validateBodyCredentials(res, newUserBody);
 
-  return;
+  const foundUser = await exports.findUserByLogin(res, newUserBody.login);
+  const currentHash = await createPasswordHash(newUserBody.password);
+
+  if (foundUser.password !== currentHash) {
+    return getNotFoundResponse(res, 401, "Unauthorized!");
+  }
+
+  const token = encrypt({ id: foundUser.id });
+  // const result = decrypt(token);
+
+  return { token };
 };
 
 exports.updateUserById = async (req, res, userId) => {

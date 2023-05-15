@@ -1,8 +1,28 @@
 const router = require("find-my-way")();
 const catController = require("../controller/cat");
+const { getNotFoundResponse } = require("../utils/getNotFoundResponse");
+const { decrypt } = require("../services/json-encryption");
 
 router.on("GET", "/cat", async (req, res) => {
-  const result = await catController.getCats();
+  const { authorization } = req.headers;
+
+  if (!authorization) {
+    res.writeHead(403);
+    return res.end(JSON.stringify(getNotFoundResponse(res, 403, "Forbidden!")));
+  } else {
+    try {
+      const tokenData = decrypt(authorization);
+      console.log(tokenData);
+    } catch (err) {
+      res.writeHead(403);
+      return res.end(
+        JSON.stringify(getNotFoundResponse(res, 403, "Forbidden!"))
+      );
+    }
+  }
+
+  console.log("req.authorization", authorization);
+  const result = await catController.getCats(res);
   res.end(JSON.stringify(result));
 });
 

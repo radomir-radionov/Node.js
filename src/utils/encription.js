@@ -1,10 +1,9 @@
 const bcrypt = require("bcrypt");
-
-const salt = "$2b$10$0NXYIuhomrZ6WikjzvISM.hvAKaTon3EsIom0zIYUQ65ws0rxx7/S";
+const { encryptionKeys } = require("../constants/encryptionKeys");
 
 exports.createPasswordHash = (password) =>
   new Promise((resolve, reject) => {
-    bcrypt.hash(password, salt, (err, hash) => {
+    bcrypt.hash(password, encryptionKeys.passwordSalt, (err, hash) => {
       if (err) {
         reject(err);
       } else {

@@ -12,6 +12,12 @@ exports.fetchUserById = async (id) => {
   return users.find((user) => user.id === id);
 };
 
+exports.findUserByLogin = async (login) => {
+  const users = await readJSONAsync(dbJsonPath);
+
+  return users.find((user) => user.login === login);
+};
+
 exports.createNewUser = async (user) => {
   const users = await readJSONAsync(dbJsonPath);
 

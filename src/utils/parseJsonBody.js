@@ -1,15 +1,15 @@
-exports.parseJsonBody = (request) =>
+exports.parseJsonBody = (req) =>
   new Promise((resolve, reject) => {
     let rawJson = "";
-    request
+    req
       .on("data", (chunk) => {
         rawJson += chunk;
       })
       .on("end", () => {
         try {
           if (rawJson) {
-            const requestBody = JSON.parse(rawJson);
-            resolve(requestBody);
+            const reqBody = JSON.parse(rawJson);
+            resolve(reqBody);
           } else {
             resolve(null);
           }

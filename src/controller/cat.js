@@ -25,7 +25,7 @@ const createCahe = () => {
 
 const cache = createCahe();
 
-exports.getCats = async () => {
+exports.getCats = async (res) => {
   const cats = await catModel.fetchAllCats();
 
   if (!cats.length) {
