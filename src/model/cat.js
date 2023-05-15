@@ -1,34 +1,8 @@
-const { createReadStream, writeFile } = require("fs");
 const path = require("path");
+const { readJSONAsync } = require("../utils/readJSONAsync");
+const { writeJSONAsync } = require("../utils/writeJSONAsync");
 
 const dbJsonPath = path.resolve(process.cwd(), "src/services/catDB.json");
-
-const readJSONAsync = (path) =>
-  new Promise((resolve) => {
-    const readStream = createReadStream(path);
-    let result = "";
-
-    readStream
-      .on("data", (chunk) => {
-        result += chunk.toString();
-      })
-      .on("end", () => {
-        if (!result) {
-          resolve([]);
-        } else {
-          resolve(JSON.parse(result));
-        }
-      });
-  });
-
-const writeJSONAsync = (path, data) => {
-  const buffer = Buffer.from(JSON.stringify(data, null, 4));
-  new Promise((resolve, reject) => {
-    writeFile(path, buffer, (err) => {
-      err ? reject(err) : resolve();
-    });
-  });
-};
 
 exports.fetchAllCats = () => readJSONAsync(dbJsonPath);
 
@@ -84,6 +58,16 @@ exports.delete = async (id) => {
   return false;
 };
 
-exports.deleteOwner = async (data) => {
-  await writeJSONAsync(dbJsonPath, data);
+exports.deleteOwner = async (userId) => {
+  const cats = await exports.fetchAllCats();
+
+  const modifiedCats = cats.map((cat) => {
+    if (cat.ownerId === userId) {
+      return { ...cat, ownerId: null };
+    } else {
+      return cat;
+    }
+  });
+
+  await writeJSONAsync(dbJsonPath, modifiedCats);
 };

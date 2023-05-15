@@ -1,38 +1,10 @@
 const userModel = require("../model/user");
 const catModel = require("../model/cat");
 const { v4: uuid } = require("uuid");
-
-const getNotFoundResponse = (res) => {
-  res.writeHead(404);
-  return {
-    error: {
-      message: "Not found",
-      code: 404,
-    },
-  };
-};
-
-const parseJsonBody = (request) =>
-  new Promise((resolve, reject) => {
-    let rawJson = "";
-    request
-      .on("data", (chunk) => {
-        rawJson += chunk;
-      })
-      .on("end", () => {
-        try {
-          if (rawJson) {
-            const requestBody = JSON.parse(rawJson);
-            resolve(requestBody);
-          } else {
-            resolve(null);
-          }
-        } catch (err) {
-          reject(err);
-        }
-      })
-      .on("error", reject);
-  });
+const { getNotFoundResponse } = require("../utils/getNotFoundResponse");
+const { parseJsonBody } = require("../utils/parseJsonBody");
+const { validateBodyCredentials } = require("../utils/validateBodyCredentials");
+const { createPasswordHash } = require("../utils/encription");
 
 exports.getUsers = async () => {
   const users = await userModel.fetchAllUsers();
@@ -54,13 +26,37 @@ exports.getUserById = async (res, userId) => {
   return user;
 };
 
-exports.createUser = async (req) => {
-  const userData = await parseJsonBody(req);
-  userData.id = uuid();
+exports.createUser = async (req, res) => {
+  const newUserData = await parseJsonBody(req);
 
-  await userModel.addNewUser(userData);
+  validateBodyCredentials(res, newUserData);
 
-  return userData;
+  console.log(1, newUserData.password);
+  newUserData.password = await createPasswordHash(newUserData.password);
+  console.log(2, newUserData.password);
+
+  newUserData.id = uuid();
+  const createResult = await userModel.createNewUser(newUserData);
+
+  if (!createResult) {
+    res.writeHead(409);
+    return {
+      error: {
+        status: 409,
+        message: "User already exists!",
+      },
+    };
+  }
+
+  return newUserData;
+};
+
+exports.loginUser = async (req, res) => {
+  const newUserBody = await parseJsonBody(req);
+
+  validateBodyCredentials(res, newUserBody);
+
+  return;
 };
 
 exports.updateUserById = async (req, res, userId) => {
@@ -78,22 +74,13 @@ exports.updateUserById = async (req, res, userId) => {
 };
 
 exports.deleteUserById = async (res, userId) => {
+  // TODO add return value for catModel.deleteOwner();
+  catModel.deleteOwner(userId);
   const updateResult = await userModel.delete(userId);
-  const cats = await catModel.fetchAllCats();
 
   if (!updateResult) {
     return getNotFoundResponse(res);
   }
-
-  const modifiedCats = cats.map((cat) => {
-    if (cat.ownerId === userId) {
-      return { ...cat, ownerId: null };
-    } else {
-      return cat;
-    }
-  });
-
-  catModel.deleteOwner(modifiedCats);
 
   return {
     id: userId,

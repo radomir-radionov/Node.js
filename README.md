@@ -35,4 +35,4 @@ PUT => PUT User => http://127.0.0.1:3000/user/13a9c017-5ee2-4a2e-84d2-b75ffeddfd
 "name": "4"
 }
 
-DELETE => DELETE User =>
+DELETE => DELETE User => http://127.0.0.1:3000/user/8e9addb5-f1e6-40c1-9473-fcfaab06975f

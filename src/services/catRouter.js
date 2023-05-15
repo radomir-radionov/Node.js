@@ -3,32 +3,27 @@ const catController = require("../controller/cat");
 
 router.on("GET", "/cat", async (req, res) => {
   const result = await catController.getCats();
-
   res.end(JSON.stringify(result));
 });
 
 router.on("GET", "/cat/:catId", async (req, res, { catId }) => {
   const result = await catController.getCatById(res, catId);
-
   res.end(JSON.stringify(result));
 });
 
 router.on("POST", "/cat", async (req, res) => {
   const result = await catController.createCat(req);
-
   res.end(JSON.stringify(result));
 });
 
 router.on("PUT", "/cat/:catId", async (req, res, { catId }) => {
   const result = await catController.updateCatById(req, res, catId);
-
   res.end(JSON.stringify(result));
 });
 
 router.all("/cat/:catId/addOwner", async (req, res, { catId }) => {
   if (req.method === "PUT" || req.method === "POST") {
     const result = await catController.addOwner(req, res, catId);
-
     res.end(JSON.stringify(result));
   } else {
     res.writeHead(405, { "Content-Type": "text/plain" });
@@ -38,7 +33,6 @@ router.all("/cat/:catId/addOwner", async (req, res, { catId }) => {
 
 router.on("DELETE", "/cat/:catId", async (req, res, { catId }) => {
   const result = await catController.deleteCatById(res, catId);
-
   res.end(JSON.stringify(result));
 });
 

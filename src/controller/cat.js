@@ -1,38 +1,8 @@
 const userModel = require("../model/user");
 const catModel = require("../model/cat");
 const { v4: uuid } = require("uuid");
-
-const getNotFoundResponse = (res) => {
-  res.writeHead(404);
-  return {
-    error: {
-      message: "Not found",
-      code: 404,
-    },
-  };
-};
-
-const parseJsonBody = (request) =>
-  new Promise((resolve, reject) => {
-    let rawJson = "";
-    request
-      .on("data", (chunk) => {
-        rawJson += chunk;
-      })
-      .on("end", () => {
-        try {
-          if (rawJson) {
-            const requestBody = JSON.parse(rawJson);
-            resolve(requestBody);
-          } else {
-            resolve(null);
-          }
-        } catch (err) {
-          reject(err);
-        }
-      })
-      .on("error", reject);
-  });
+const { getNotFoundResponse } = require("../utils/getNotFoundResponse");
+const { parseJsonBody } = require("../utils/parseJsonBody");
 
 const createCahe = () => {
   let cache = {};

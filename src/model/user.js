@@ -1,33 +1,8 @@
-const { createReadStream, writeFile } = require("fs");
 const path = require("path");
+const { readJSONAsync } = require("../utils/readJSONAsync");
+const { writeJSONAsync } = require("../utils/writeJSONAsync");
 
 const dbJsonPath = path.resolve(process.cwd(), "src/services/userDB.json");
-
-const readJSONAsync = (path) =>
-  new Promise((resolve) => {
-    const readStream = createReadStream(path);
-    let result = "";
-    readStream
-      .on("data", (chunk) => {
-        result += chunk.toString();
-      })
-      .on("end", () => {
-        if (!result) {
-          resolve([]);
-        } else {
-          resolve(JSON.parse(result));
-        }
-      });
-  });
-
-const writeJSONAsync = (path, data) => {
-  const buffer = Buffer.from(JSON.stringify(data, null, 4));
-  new Promise((resolve, reject) => {
-    writeFile(path, buffer, (err) => {
-      err ? reject(err) : resolve();
-    });
-  });
-};
 
 exports.fetchAllUsers = () => readJSONAsync(dbJsonPath);
 
@@ -37,12 +12,21 @@ exports.fetchUserById = async (id) => {
   return users.find((user) => user.id === id);
 };
 
-exports.addNewUser = async (data) => {
+exports.createNewUser = async (user) => {
   const users = await readJSONAsync(dbJsonPath);
 
-  users.push(data);
+  const existedUser = users.find(
+    (existedUser) => existedUser.login === user.login
+  );
+
+  if (existedUser) {
+    return false;
+  }
+
+  users.push(user);
 
   await writeJSONAsync(dbJsonPath, users);
+  return true;
 };
 
 exports.update = async (data) => {

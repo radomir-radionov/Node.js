@@ -1,26 +1,8 @@
 [
     {
-        "name": "1",
-        "image": "12",
-        "id": "98e0ca72-0c72-48e1-ac67-b45e931e340a",
-        "pets": [
-            {
-                "name": "2",
-                "image": "1",
-                "id": "2bf89aa5-07e3-477c-b4f2-d07fb379f5ec",
-                "ownerId": "98e0ca72-0c72-48e1-ac67-b45e931e340a"
-            },
-            {
-                "name": "55",
-                "image": "33",
-                "id": "13a9c017-5ee2-4a2e-84d2-b75ffeddfd39",
-                "ownerId": "98e0ca72-0c72-48e1-ac67-b45e931e340a"
-            }
-        ]
-    },
-    {
-        "name": "1",
-        "image": "12",
-        "id": "e885d811-603a-4b52-bcce-90d3b4791774"
+        "name": "2",
+        "login": "4856h6",
+        "password": "$2b$10$0NXYIuhomrZ6WikjzvISM.tMyUIBrz9xOEZeQlVyB1vXkHjYrai6.",
+        "id": "750d935d-1cd7-4863-af93-c0d249c41bad"
     }
 ]

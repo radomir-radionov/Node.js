@@ -22,6 +22,8 @@
     "nodemon": "^2.0.22"
   },
   "dependencies": {
+    "@types/node": "^20.1.4",
+    "bcrypt": "^5.1.0",
     "find-my-way": "^7.6.2",
     "uuid": "^9.0.0"
   }
