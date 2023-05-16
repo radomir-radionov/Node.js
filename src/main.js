@@ -1,6 +1,7 @@
 const { createServer } = require("http");
 const catRouter = require("./services/catRouter");
 const userRouter = require("./services/userRouter");
+require("dotenv").config();
 
 const port = 3000;
 const host = "127.0.0.1";

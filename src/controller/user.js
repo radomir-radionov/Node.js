@@ -6,13 +6,6 @@ const { parseJsonBody } = require("../utils/parseJsonBody");
 const { validateBodyCredentials } = require("../utils/validateBodyCredentials");
 const { createPasswordHash } = require("../utils/encription");
 const { encrypt, decrypt } = require("../services/json-encryption");
-const { encryptionKeys } = require("../constants/encryptionKeys");
-const createEncryptor = require("../utils/sync_enc");
-
-const encryptor = createEncryptor(
-  encryptionKeys.syncEncryptor.keyword,
-  encryptionKeys.syncEncryptor.salt
-);
 
 exports.getUsers = async (res) => {
   const users = await userModel.fetchAllUsers();
@@ -20,7 +13,6 @@ exports.getUsers = async (res) => {
   if (!users.length) {
     return getNotFoundResponse(res);
   }
-
   return users;
 };
 
@@ -78,7 +70,11 @@ exports.loginUser = async (req, res) => {
     return getNotFoundResponse(res, 401, "Unauthorized!");
   }
 
-  const token = encrypt({ id: foundUser.id });
+  const token = encrypt({
+    id: foundUser.id,
+    roles: foundUser.roles,
+    exp: Date.now(),
+  });
   // const result = decrypt(token);
 
   return { token };

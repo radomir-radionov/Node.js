@@ -24,6 +24,7 @@
   "dependencies": {
     "@types/node": "^20.1.4",
     "bcrypt": "^5.1.0",
+    "dotenv": "^16.0.3",
     "find-my-way": "^7.6.2",
     "uuid": "^9.0.0"
   }
