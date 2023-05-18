@@ -5,10 +5,8 @@ const { HttpError } = require("../utils/customError");
 exports.checkAuth = (req) => {
   const { authorization } = req.headers;
   if (!authorization) {
-    console.log(1);
     throw new HttpError("Forbidden", 403);
   }
-
   try {
     req.user = decrypt(authorization);
   } catch (err) {
@@ -21,7 +19,6 @@ exports.identification =
   (...args) => {
     const [req, res] = args;
     const { authorization } = req.headers;
-
     if (!authorization) {
       res.writeHead(403);
       return res.end(
@@ -37,7 +34,6 @@ exports.identification =
         );
       }
     }
-
     return cb(...args);
   };
 

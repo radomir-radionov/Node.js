@@ -36,6 +36,21 @@ router.on("PUT", "/user/:userId", async (req, res, { userId }) => {
   res.end(JSON.stringify(result));
 });
 
+const addUserRoleCb = async (req, res) => {
+  const result = await userController.addUserRole(req, res);
+  res.end(JSON.stringify(result));
+};
+
+router.on(
+  "PUT",
+  "/user/addUserRole",
+  routerMiddleware([
+    checkAuth,
+    identification(checkRole("ADMIN")),
+    addUserRoleCb,
+  ])
+);
+
 router.on(
   "DELETE",
   "/user/:userId",

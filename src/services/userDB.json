@@ -4,7 +4,7 @@
     "login": "test",
     "password": "$2b$10$0NXYIuhomrZ6WikjzvISM.Iuno65Fs42i6n5ZLgGwCt0.F6BTRvFq",
     "id": "193da785-b621-451a-8de0-3b38718052dc",
-    "roles": ["USER"]
+    "roles": ["USER", "SUPERUSER"]
   },
   {
     "name": "test",

@@ -46,7 +46,6 @@ exports.update = async (data) => {
   users[foundUserIndex] = data;
 
   await writeJSONAsync(dbJsonPath, users);
-
   return true;
 };
 

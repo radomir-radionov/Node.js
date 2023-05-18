@@ -107,3 +107,23 @@ exports.deleteUserById = async (res, userId) => {
     id: userId,
   };
 };
+
+exports.addUserRole = async (req, res) => {
+  const { userId, roles } = await parseJsonBody(req);
+
+  const foundUser = await userModel.fetchUserById(userId);
+  const isSubset = foundUser.roles.some((role) => roles.includes(role));
+
+  if (isSubset) {
+    return getNotFoundResponse(res, 400, "Data is repeated");
+  }
+
+  foundUser.roles = foundUser.roles.concat(roles);
+  const updatedUser = await userModel.update(foundUser);
+
+  if (!updatedUser) {
+    return getNotFoundResponse(res);
+  }
+
+  return updatedUser;
+};
