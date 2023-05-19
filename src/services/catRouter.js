@@ -1,15 +1,10 @@
 const router = require("find-my-way")();
 const catController = require("../controller/cat");
-const { identification } = require("./auth");
 
-router.on(
-  "GET",
-  "/cat",
-  identification(async (req, res) => {
-    const result = await catController.getCats(req, res);
-    res.end(JSON.stringify(result));
-  })
-);
+router.on("GET", "/cat", async (req, res) => {
+  const result = await catController.getCats(req, res);
+  res.end(JSON.stringify(result));
+});
 
 router.on("GET", "/cat/:catId", async (req, res, { catId }) => {
   const result = await catController.getCatById(res, catId);

@@ -1,13 +1,11 @@
-const bcrypt = require("bcrypt");
-const { encryptionKeys } = require("../constants/encryptionKeys");
+const argon2 = require("argon2");
+const { passwordSalt } = require("../constants/encryptionKeys");
 
-exports.createPasswordHash = (password) =>
-  new Promise((resolve, reject) => {
-    bcrypt.hash(password, encryptionKeys.passwordSalt, (err, hash) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(hash);
-      }
-    });
-  });
+exports.createPasswordHash = (password) => {
+  try {
+    return argon2.hash(password, { salt: Buffer.from(passwordSalt) });
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};

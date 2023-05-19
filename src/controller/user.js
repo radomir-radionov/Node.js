@@ -5,7 +5,7 @@ const { getNotFoundResponse } = require("../utils/getNotFoundResponse");
 const { parseJsonBody } = require("../utils/parseJsonBody");
 const { validateBodyCredentials } = require("../utils/validateBodyCredentials");
 const { createPasswordHash } = require("../utils/encription");
-const { encrypt, decrypt } = require("../services/json-encryption");
+const jwt = require("../services/jwt");
 
 exports.getUsers = async (res) => {
   const users = await userModel.fetchAllUsers();
@@ -37,16 +37,23 @@ exports.findUserByLogin = async (res, userLogin) => {
 };
 
 exports.createUser = async (req, res) => {
-  const newUserData = await parseJsonBody(req);
+  const { password, ...newUserData } = await parseJsonBody(req);
 
-  validateBodyCredentials(res, newUserData);
+  validateBodyCredentials(res, { ...newUserData, password });
 
-  newUserData.password = await createPasswordHash(newUserData.password);
+  const passwordHash = await createPasswordHash(password);
 
-  newUserData.id = uuid();
-  const createResult = await userModel.createNewUser(newUserData);
+  const user = {
+    id: uuid(),
+    ...newUserData,
+  };
 
-  if (!createResult) {
+  const createdUser = await userModel.createNewUser({
+    ...user,
+    password: passwordHash,
+  });
+
+  if (!createdUser) {
     res.writeHead(409);
     return {
       error: {
@@ -56,7 +63,7 @@ exports.createUser = async (req, res) => {
     };
   }
 
-  return newUserData;
+  return user;
 };
 
 exports.loginUser = async (req, res) => {
@@ -70,14 +77,14 @@ exports.loginUser = async (req, res) => {
     return getNotFoundResponse(res, 401, "Unauthorized!");
   }
 
-  const token = encrypt({
-    id: foundUser.id,
-    roles: foundUser.roles,
-    exp: Date.now(),
-  });
-  // const result = decrypt(token);
+  console.log(foundUser);
 
-  return { token };
+  return {
+    token: jwt.sign({
+      sub: foundUser.id,
+      roles: foundUser.roles,
+    }),
+  };
 };
 
 exports.updateUserById = async (req, res, userId) => {

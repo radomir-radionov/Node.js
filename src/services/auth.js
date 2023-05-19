@@ -1,41 +1,18 @@
-const { getNotFoundResponse } = require("../utils/getNotFoundResponse");
-const { decrypt } = require("./json-encryption");
 const { HttpError } = require("../utils/customError");
+const jwt = require("../services/jwt");
 
 exports.checkAuth = (req) => {
   const { authorization } = req.headers;
   if (!authorization) {
-    throw new HttpError("Forbidden", 403);
+    throw new HttpError("Unauthorized", 401);
   }
   try {
-    req.user = decrypt(authorization);
+    const [_, token] = authorization.split(" ");
+    req.user = jwt.verify(token);
   } catch (err) {
-    throw new HttpError("Forbidden", 403);
+    throw new HttpError("Unauthorized", 401);
   }
 };
-
-exports.identification =
-  (cb) =>
-  (...args) => {
-    const [req, res] = args;
-    const { authorization } = req.headers;
-    if (!authorization) {
-      res.writeHead(403);
-      return res.end(
-        JSON.stringify(getNotFoundResponse(res, 403, "Forbidden!"))
-      );
-    } else {
-      try {
-        req.user = decrypt(authorization);
-      } catch (err) {
-        res.writeHead(403);
-        return res.end(
-          JSON.stringify(getNotFoundResponse(res, 403, "Forbidden!"))
-        );
-      }
-    }
-    return cb(...args);
-  };
 
 exports.checkRole =
   (...requiredRoles) =>

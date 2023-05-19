@@ -1,16 +1,9 @@
 [
   {
-    "name": "test",
-    "login": "test",
-    "password": "$2b$10$0NXYIuhomrZ6WikjzvISM.Iuno65Fs42i6n5ZLgGwCt0.F6BTRvFq",
-    "id": "193da785-b621-451a-8de0-3b38718052dc",
-    "roles": ["USER", "SUPERUSER"]
-  },
-  {
-    "name": "test",
-    "login": "test1",
-    "password": "$2b$10$0NXYIuhomrZ6WikjzvISM.Iuno65Fs42i6n5ZLgGwCt0.F6BTRvFq",
-    "id": "73c44029-dbfc-4be8-ab83-d113df83f3c4",
-    "roles": ["ADMIN"]
+    "id": "d7943b41-c22c-421a-aff9-a8f850d45cea",
+    "name": "user",
+    "roles": ["SUPERADMIN"],
+    "login": "user",
+    "password": "$argon2id$v=19$m=65536,t=3,p=4$N3k3WGU0dkFSM1A1VDlHYnlNZVlHeTRyWDVQcHh0V3ZTZXZ3Y2JadUV3alZOSEszV3B4TmszeFJQQXBOeFFRWTVGa3NMVmtEOHEzYzl5ejc$+gqzMyrTlutVXwoSRtYQgNFMbY9XS2vLdQLqHbxUMao"
   }
 ]
