@@ -1,0 +1,11 @@
+{
+  "apps": [
+    {
+      "name": "myapp",
+      "script": "pm2/server.js",
+      "instances": 2,
+      "exec_mode": "cluster",
+      "error_file": "pm2/errors.log"
+    }
+  ]
+}

@@ -1,9 +1,0 @@
-[
-  {
-    "id": "d7943b41-c22c-421a-aff9-a8f850d45cea",
-    "name": "user",
-    "roles": ["SUPERADMIN"],
-    "login": "user",
-    "password": "$argon2id$v=19$m=65536,t=3,p=4$N3k3WGU0dkFSM1A1VDlHYnlNZVlHeTRyWDVQcHh0V3ZTZXZ3Y2JadUV3alZOSEszV3B4TmszeFJQQXBOeFFRWTVGa3NMVmtEOHEzYzl5ejc$+gqzMyrTlutVXwoSRtYQgNFMbY9XS2vLdQLqHbxUMao"
-  }
-]
