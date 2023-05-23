@@ -1,0 +1,29 @@
+{
+  "name": "node.js_course",
+  "version": "1.0.0",
+  "description": "task: use digitalocean",
+  "main": "index.mjs",
+  "scripts": {
+    "dev": "nodemon index.mjs",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/radomir-radionov/Node.js.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/radomir-radionov/Node.js/issues"
+  },
+  "homepage": "https://github.com/radomir-radionov/Node.js#readme",
+  "dependencies": {
+    "formidable": "^2.1.1",
+    "nanoid": "^4.0.2",
+    "nodemon": "^2.0.22"
+  },
+  "devDependencies": {
+    "@types/node": "^20.2.3"
+  }
+}
