@@ -47,7 +47,6 @@ module.exports = (userConfig) => {
       if (beforeMethod) {
         await executeHook(beforeMethod, params, null, raw)
       }
-
       const result = await config.methods[method](params, raw)
 
       const afterMethod = config.afterMethods[method]
