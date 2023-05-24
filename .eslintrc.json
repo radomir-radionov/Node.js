@@ -9,6 +9,7 @@
   "parserOptions": {
     "ecmaVersion": "latest"
   },
+  "plugins": ["prettier"],
   "rules": {
     "comma-dangle": [
       "warn",
