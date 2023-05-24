@@ -21,6 +21,7 @@
         "functions": "never"
       }
     ],
-    "semi": ["warn", "never"]
+    "semi": ["warn", "never"],
+    "no-console": "error"
   }
 }
