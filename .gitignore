@@ -1,6 +1,1 @@
-.nyc_output/
-coverage/
-node_modules/
-npm-debug.log
-package-lock.json
-.idea
+node_modules
