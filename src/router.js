@@ -1,14 +1,10 @@
 const { Router } = require("express")
-const mainController = require("./controller/main-page/index")
+const mainController = require("./controller/main-page")
+const phonesController = require("./controller/phones")
 
 const router = Router()
 
-router.get("/", (req, res) => {
-  res.render("main", { title: "Main page", message: "hi" })
-})
-
-router.get("/cats", (req, res) => {
-  res.send("Hello World!")
-})
+router.get("/", mainController)
+router.get("/phones", phonesController.getList)
 
 module.exports = router

@@ -4,11 +4,25 @@ html
             title Страница магазина - #{title}
         else
            title Интернет магазина телефонов
-        //- block scripts 
-        //-     script(src=`/jquery.js`)
-    body 
-        block aside
-        block content 
-        block foot 
-            #footer 
-                p some footer content
+        link(rel="stylesheet", href="/styles/materialize.css")
+    body
+        #app
+            block header
+                #navigation.container
+                    h2 Навигация
+                    ul.row
+                        li.col.s2.offset-s6 
+                            a(href= "/").waves-light.btn-small Главная
+                        li.col.s2.offset-s6
+                            a(href= "/login").waves-light.btn-small Вход
+                        li.col.s2.offset-s6
+                            a(href= "/phoner").waves-light.btn-small Телефоны
+            .container
+                block content
+            block foot 
+                #footer.row.col.s12.blue
+                    p some footer text
+                    p some footer text
+            block scripts
+              script(src="/scripts/materialize.js")
+                
