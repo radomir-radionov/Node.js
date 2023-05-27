@@ -1,13 +1,13 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-generator client {
-  provider = "prisma-client-js"
-}
-
 datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
 }
 
 model Fabric {
@@ -16,34 +16,37 @@ model Fabric {
   Product Product[]
 }
 
-model User {
-  id           Int            @id @default(autoincrement())
-  email        String         @unique
-  name         String?
-  products     Product?       @relation(fields: [productId], references: [id])
-  productId    Int?
-  UserOProduct UserOProduct[]
-}
-
 model Product {
-  id           Int            @id @default(autoincrement())
-  title        String
-  year         Int
-  price        Int
-  isAvailable  Boolean        @default(false)
-  fabric       Fabric?        @relation(fields: [fabricId], references: [id])
-  fabricId     Int
-  users        User[]
-  UserOProduct UserOProduct[]
+  id            Int             @id @default(autoincrement())
+  title         String          @unique
+  image         String?
+  year          Int
+  price         Int
+  isAvailable   Boolean         @default(false)
+  fabric        Fabric?         @relation(fields: [fabricId], references: [id])
+  fabricId      Int?
+  users         User[]
+  UserOnProduct UserOnProduct[]
 }
 
-model UserOProduct {
-  post       Product  @relation(fields: [postId], references: [id])
-  postId     Int
+model UserOnProduct {
+  product    Product  @relation(fields: [productId], references: [id])
+  productId  Int
   user       User     @relation(fields: [userId], references: [id])
   userId     Int
   assignedAt DateTime @default(now())
   assignedBy String
 
-  @@id([postId, userId])
+  @@id([productId, userId])
+}
+
+model User {
+  id            Int             @id @default(autoincrement())
+  email         String          @unique
+  passwordHash  String
+  image         String?
+  name          String?
+  products      Product?        @relation(fields: [productId], references: [id])
+  productId     Int?
+  UserOnProduct UserOnProduct[]
 }
