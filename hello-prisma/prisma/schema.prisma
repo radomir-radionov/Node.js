@@ -17,20 +17,33 @@ model Fabric {
 }
 
 model User {
-  id       Int       @id @default(autoincrement())
-  email    String    @unique
-  name     String?
-  products Product[]
+  id           Int            @id @default(autoincrement())
+  email        String         @unique
+  name         String?
+  products     Product?       @relation(fields: [productId], references: [id])
+  productId    Int?
+  UserOProduct UserOProduct[]
 }
 
 model Product {
-  id          Int     @id @default(autoincrement())
-  title       String
-  year        Int
-  price       Int
-  isAvailable Boolean @default(false)
-  fabric      Fabric? @relation(fields: [fabricId], references: [id])
-  fabricId    Int
-  User        User?   @relation(fields: [userId], references: [id])
-  userId      Int?
+  id           Int            @id @default(autoincrement())
+  title        String
+  year         Int
+  price        Int
+  isAvailable  Boolean        @default(false)
+  fabric       Fabric?        @relation(fields: [fabricId], references: [id])
+  fabricId     Int
+  users        User[]
+  UserOProduct UserOProduct[]
+}
+
+model UserOProduct {
+  post       Product  @relation(fields: [postId], references: [id])
+  postId     Int
+  user       User     @relation(fields: [userId], references: [id])
+  userId     Int
+  assignedAt DateTime @default(now())
+  assignedBy String
+
+  @@id([postId, userId])
 }
