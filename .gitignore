@@ -1,2 +1,2 @@
-micro_services/gateway/node_modules
-micro_services/storage/node_modules
+grpc/node_modules
+json-rpc/node_modules
