@@ -11,4 +11,6 @@ app.use(errorHandler)
 app.use(bodyParser())
 app.use(router.routes())
 
-app.listen(port)
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
