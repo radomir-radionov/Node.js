@@ -1,1 +1,1 @@
-task: use digitalocean
+task: use digitalocean for creating server
