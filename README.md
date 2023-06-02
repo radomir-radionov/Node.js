@@ -1,4 +1,13 @@
-# desc
+## task
+
+Есть какой-то баг, надо починить.  
+Рабочий вариант  должен выглядеть так:  
+Welding car part: Engine  
+RRRRR engine run!  
+The car started, good luck!
+
+
+## desc
 
 ### TypeError: CarBody is not a constructor
 
