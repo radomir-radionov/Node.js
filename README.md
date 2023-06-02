@@ -1,4 +1,8 @@
-install
+### task  
+
+create package for npm
+
+### install
 
 ```javascript
 npm i package_radomir_dependecies
