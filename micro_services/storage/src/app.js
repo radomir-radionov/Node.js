@@ -10,4 +10,6 @@ app.use(errorHandler)
 app.use(bodyParser())
 app.use(router.routes())
 
-app.listen(port)
+app.listen(port, () => {
+  console.log(`We are listening internal http://127.0.0.1:${port}`)
+})
