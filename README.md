@@ -16,7 +16,7 @@ task12 - https://github.com/radomir-radionov/node.js_way/tree/task12
 task13 - https://github.com/radomir-radionov/node.js_way/tree/task13   
 task14 - https://github.com/radomir-radionov/node.js_way/tree/task14   
 task15 - https://github.com/radomir-radionov/node.js_way/tree/task15   
-task16 -  
+task16 - https://github.com/radomir-radionov/node.js_way/tree/task16
 task17 -  
 task18 -  
 task19 -  
