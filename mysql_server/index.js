@@ -1,6 +1,5 @@
 const mysql = require('mysql')
 
-console.log('hello')
 const connection = mysql.createConnection({
   host: 'database',
   user: 'root',
