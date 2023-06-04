@@ -1,0 +1,25 @@
+{
+  "name": "node.js_course",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "docker:start": "docker-compose up -d",
+    "docker:stop": "docker-compose down"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/radomir-radionov/Node.js.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/radomir-radionov/Node.js/issues"
+  },
+  "homepage": "https://github.com/radomir-radionov/Node.js#readme",
+  "dependencies": {
+    "knex": "^2.4.2",
+    "pg": "^8.11.0"
+  }
+}
