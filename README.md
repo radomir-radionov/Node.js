@@ -1,5 +1,3 @@
-tasks:
+### task
 
-- run database using docker
-- use postrgres
-- use query builder(knex)
+- use ORM(sequelize) to intreact with the database

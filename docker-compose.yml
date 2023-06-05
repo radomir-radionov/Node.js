@@ -1,14 +1,14 @@
-version: '3.8'
+version: '3.9'
 
 volumes:
-  lesson_50_storage_data:
+  tms_db_data:
 
 services:
-  database:
-    image: postgres:14.3-alpine
-    env_file: ./.env
+  tms_db:
+    image: postgres:14.4-alpine
+    env_file: .env
     restart: unless-stopped
     volumes:
-      - lesson_50_storage_data:/var/lib/postgresql/data
+      - tms_db_data:/var/lib/postgresql/data
     ports:
-      - '5432:5432'
+      - '${DB_PORT}:5432'
