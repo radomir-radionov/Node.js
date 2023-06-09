@@ -1,14 +1,13 @@
-version: '3.9'
-
-volumes:
-  tms_db_data:
+version: '3.0'
 
 services:
-  tms_db:
-    image: postgres:14.4-alpine
-    env_file: .env
+  mongo:
+    container_name: mongo-test
+    image: mongo:4.2-bionic
     restart: unless-stopped
     volumes:
-      - tms_db_data:/var/lib/postgresql/data
+      - ./data:/data/db
     ports:
-      - '${DB_PORT}:5432'
+      - '10000:27017'
+    env_file:
+      - .env
