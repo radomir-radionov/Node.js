@@ -1,3 +1,3 @@
 ### task
 
-- use ORM(sequelize) to intreact with the database
+- use ODM(MongoDB) to intreact with the database
