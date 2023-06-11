@@ -1,15 +1,17 @@
 {
-  "name": "lesson_51",
+  "name": "lesson_52",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
     "docker:up": "docker compose up -d",
-    "docker:down": "docker compose down"
+    "docker:down": "docker compose down",
+    "db:migrate": "npx sequelize-cli db:migrate",
+    "db:undo": "npx sequelize-cli db:migrate:undo"
   },
   "keywords": [],
-  "author": "",
+  "author": "Ra",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.0.1",
