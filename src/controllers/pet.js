@@ -1,13 +1,16 @@
 const { get } = require('lodash')
 const { Sequelize } = require('sequelize')
-const { Pet, User, sequelize } = require('../services/db')
+const { Pets, User, sequelize } = require('../services/db/models')
 
 exports.createPet = async (req, res) => {
   const { owner_id, ...params } = req.body
   const user = await User.findOne({
+    attributes: ['id', 'firstName'],
     where: { id: owner_id }
   })
-  const pet = await Pet.create(params)
+  console.log('user', user)
+  const pet = await Pets.create(params)
+  console.log('pet', pet)
   await user.addPet(pet)
   res.send(pet)
 }
@@ -30,7 +33,7 @@ exports.sellPet = async (req, res) => {
       where: {
         id: buyer_id
       }
-    }),
+    })
   ])
   const pet = get(seller, 'Pets[0]', null)
   if (!pet) {
@@ -40,7 +43,7 @@ exports.sellPet = async (req, res) => {
   }
 
   const transaction = await sequelize.transaction({
-    isolationLevel: Sequelize.Transaction.SERIALIZABLE,
+    isolationLevel: Sequelize.Transaction.SERIALIZABLE
   })
 
   try {
