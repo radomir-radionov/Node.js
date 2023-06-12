@@ -23,9 +23,9 @@ task19 - https://github.com/radomir-radionov/node.js_way/tree/task19
 task20 - https://github.com/radomir-radionov/node.js_way/tree/task20  
 
 task21 -   
-task22 -  
-task23 -
-task24 - 
-task25 -
-task26 -
+task22 -    
+task23 -  
+task24 -   
+task25 -  
+task26 -  
 task27 - 
