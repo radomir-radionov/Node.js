@@ -11,4 +11,76 @@ services:
     volumes:
       - tms_db_data:/var/lib/postgresql/data
     ports:
-      - "${DB_PORT}:5432"
+      - '${DB_PORT}:5432'
+
+  tms_web_server:
+    image: nginx:1.23-alpine
+    restart: unless-stopped
+    ports:
+      - '3000:80'
+    volumes:
+      - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+
+  cache_server:
+    image: redis:7-alpine
+    restart: unless-stopped
+
+  tms_worker_server_1:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: tms_worker_server_1
+    stdin_open: true
+    tty: true
+    env_file: .env
+    depends_on:
+      - tms_db
+    environment:
+      APP_PORT: 80
+      DB_HOST: tms_db
+      DB_PORT: 5432
+      CONTAINER_ID: 'NODE SERVER ONE'
+    volumes:
+      - ./:/app
+    ports:
+      - '3001:80'
+
+  tms_worker_server_2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: tms_worker_server_2
+    stdin_open: true
+    tty: true
+    env_file: .env
+    depends_on:
+      - tms_db
+    environment:
+      APP_PORT: 80
+      DB_HOST: tms_db
+      DB_PORT: 5432
+      CONTAINER_ID: 'NODE SERVER TWO'
+    volumes:
+      - ./:/app
+    ports:
+      - '3002:80'
+
+  tms_worker_server_3:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: tms_worker_server_3
+    stdin_open: true
+    tty: true
+    env_file: .env
+    depends_on:
+      - tms_db
+    environment:
+      APP_PORT: 80
+      DB_HOST: tms_db
+      DB_PORT: 5432
+      CONTAINER_ID: 'NODE SERVER THREE'
+    volumes:
+      - ./:/app
+    ports:
+      - '3003:80'

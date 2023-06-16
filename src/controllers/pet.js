@@ -8,9 +8,12 @@ exports.createPet = async (req, res) => {
     attributes: ['id', 'firstName'],
     where: { id: owner_id }
   })
-  console.log('user', user)
+
+  if (!user) {
+    return res.status(404).send({ error: 'User does not exist' })
+  }
+
   const pet = await Pets.create(params)
-  console.log('pet', pet)
   await user.addPet(pet)
   res.send(pet)
 }

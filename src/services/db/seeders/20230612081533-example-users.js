@@ -4,7 +4,7 @@ const { faker } = require('@faker-js/faker')
 const tableName = 'Users'
 const moods = ['good', 'nice', 'fine']
 const getRandomArrayEl = (arr) => arr[Math.floor(Math.random() * arr.length)]
-const fakeUser = new Array(100).fill(null).map((_, i) => ({
+const fakeUser = new Array(10000).fill(null).map((_, i) => ({
   firstName: faker.person.firstName(),
   lastName: faker.person.lastName(),
   email: faker.internet.email(),

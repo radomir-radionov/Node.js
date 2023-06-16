@@ -3,9 +3,8 @@ const { Model } = require('sequelize')
 module.exports = (sequelize, DataTypes) => {
   class Pets extends Model {
     static associate(models) {
-      models.Pets.hasOne(models.User, {
-        foreignKey: 'userId'
-      })
+      // if dont work  then add foreign key
+      models.Pets.belongsTo(models.User)
     }
   }
   Pets.init(
