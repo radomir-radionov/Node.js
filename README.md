@@ -1,4 +1,9 @@
-### Project Instalation
+### Project Installation
 
-- `./install_project.sh` - init base project config(`chmod +x ./install_project.sh`)
-- `docker:rs` - run docker and attach some services
+- `./install_project.sh` - to init base project config
+
+### Useful links
+
+- https://www.apollographql.com/docs/apollo-server/schema/schema#supported-types
+- https://www.apollographql.com/docs/apollo-server/getting-started
+- https://www.apollographql.com/docs/apollo-server/schema/schema#the-mutation-type

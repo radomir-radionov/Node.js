@@ -1,23 +1,48 @@
 require('dotenv').config()
 
 const express = require('express')
-const router = require('./src/router/index')
+const { ApolloServer, AuthenticationError } = require('apollo-server-express')
+const { ApolloServerPluginLandingPageGraphQLPlayground } = require('apollo-server-core')
+
 const getCacheClient = require('./src/services/cache')
-const app = express()
+const schema = require('./src/gql-schema')
 
 const port = process.env.APP_PORT || 3000
 
-app.use(express.json())
-app.use(async (req, res, next) => {
-  req.cacheClient = await getCacheClient()
-  next()
-})
-app.use(router)
-
 async function main() {
-  // await sequelize.sync()
+  const cacheClient = await getCacheClient()
+  const server = new ApolloServer({
+    schema,
+    plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
+    formatError(err) {
+      if (process.env.NODE_ENV !== 'production') {
+        console.error(err)
+      }
 
-  //  {force: process.env.NODE_ENV === 'development'}
+      return err
+    },
+    context({ req }) {
+      const token = req.headers.authorization
+      console.log(token)
+      if (!token) {
+        throw new AuthenticationError('Token must be provided')
+      }
+
+      const user = {
+        name: '333'
+      }
+
+      return { cacheClient, user }
+    }
+  })
+  const app = express()
+
+  await server.start()
+  server.applyMiddleware({ app })
+  // app.use(async (req, res, next) => {
+  //   req.cacheClient = await getCacheClient()
+  //   next()
+  // })
 
   app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
