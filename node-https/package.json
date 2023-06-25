@@ -1,0 +1,23 @@
+{
+  "name": "node.js_course",
+  "version": "1.0.0",
+  "description": "- `./install_project.sh` - to init base project config",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/radomir-radionov/Node.js.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/radomir-radionov/Node.js/issues"
+  },
+  "homepage": "https://github.com/radomir-radionov/Node.js#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
