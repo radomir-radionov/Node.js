@@ -1,9 +1,0 @@
-version: '3.9'
-
-services:
-  static_server:
-    image: nginx:1.23
-    ports:
-      - '${PORT:-3000}:80'
-    volumes:
-      - ./static:/usr/share/nginx/html:ro
