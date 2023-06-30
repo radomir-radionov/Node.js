@@ -8,6 +8,7 @@ const { Server } = require('socket.io')
 const handleError = require('./utils/global-error-handler')
 const logger = require('./utils/logger')
 const connectLogger = require('./utils/connect-logger')
+const initAmqt = require('./services/amqt')
 
 const app = express()
 const httpServer = createServer(app)
@@ -35,4 +36,8 @@ app.use(handleError)
 
 httpServer.listen(port, () => {
   logger.info(`Server started on port ${port}!`)
+  setTimeout(async () => {
+    await initAmqt()
+    logger.info('message brocker started successfully')
+  }, 10000)
 })

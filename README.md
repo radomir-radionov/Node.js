@@ -1,7 +1,5 @@
-# Requirements
-- node.js v16+
+docker compose down && docker compose up -d --build && docker ps
 
-# Stack
- - express.js
- - pub.js
- - prisma
+problems:
+
+- rabbitmq run before gateway
