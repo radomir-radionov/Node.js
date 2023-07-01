@@ -1,0 +1,35 @@
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    User:
+      type: object
+      required:
+        - user_id
+        - name
+        - status
+      properties:
+        user_id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        surname:
+          type: string
+        status:
+          type: string
+          description: User Status
+          enum:
+            - active
+            - disabled
+            - banned
+            - deleted
+
+    Users:
+      type: array
+      items:
+        $ref: '#/components/schemas/User'

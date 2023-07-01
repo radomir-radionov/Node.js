@@ -1,5 +1,6 @@
-docker compose down && docker compose up -d --build && docker ps
+path: http://localhost:3000/api/docs/
 
-problems:
+commands:
 
-- rabbitmq run before gateway
+- run swagger: ./node_modules/.bin/nodemon express-swagger-ui/index.js
+- run swagger-jsdoc: ./node_modules/.bin/nodemon swagger-jsdoc/index.js

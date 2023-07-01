@@ -1,0 +1,14 @@
+{
+  "name": "node.js_course",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "ra",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemon": "^2.0.22",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^4.6.3",
+    "yamljs": "^0.3.0"
+  }
+}
