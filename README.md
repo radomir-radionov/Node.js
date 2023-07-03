@@ -28,5 +28,5 @@ task24 - https://github.com/radomir-radionov/node.js_way/tree/task24 - nginx
 task25 - https://github.com/radomir-radionov/node.js_way/tree/task25 - logging  
 task26 - https://github.com/radomir-radionov/node.js_way/tree/task26 - rabbitmq  
 task27 - https://github.com/radomir-radionov/node.js_way/tree/task27 - swagger  
-task28 - https://github.com/radomir-radionov/node.js_way/tree/task28 - moleculer.js
+task28 - https://github.com/radomir-radionov/node.js_way/tree/task28 - moleculer.js  
 task29 - https://github.com/radomir-radionov/node.js_way/tree/task20 
