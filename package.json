@@ -1,14 +1,17 @@
 {
-  "name": "node.js_course",
+  "name": "nodejs-60",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
-  "author": "ra",
+  "scripts": {
+    "run docker": "docker compose down -v && docker compose up --build"
+  },
+  "keywords": [],
+  "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2",
-    "nodemon": "^2.0.22",
-    "swagger-jsdoc": "^6.2.8",
-    "swagger-ui-express": "^4.6.3",
-    "yamljs": "^0.3.0"
+    "@socket.io/redis-adapter": "^7.2.0",
+    "redis": "^4.2.0",
+    "socket.io": "^4.5.1"
   }
 }
