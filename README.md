@@ -11,20 +11,22 @@ task7 - https://github.com/radomir-radionov/node.js_way/tree/task7
 task8 - https://github.com/radomir-radionov/node.js_way/tree/task8  
 task9 - https://github.com/radomir-radionov/node.js_way/tree/task9  
 task10 - https://github.com/radomir-radionov/node.js_way/tree/task10  
-task11 - https://github.com/radomir-radionov/node.js_way/tree/task11  
-task12 - https://github.com/radomir-radionov/node.js_way/tree/task12   
-task13 - https://github.com/radomir-radionov/node.js_way/tree/task13   
-task14 - https://github.com/radomir-radionov/node.js_way/tree/task14   
-task15 - https://github.com/radomir-radionov/node.js_way/tree/task15   
-task16 - https://github.com/radomir-radionov/node.js_way/tree/task16  
-task17 - https://github.com/radomir-radionov/node.js_way/tree/task17  
-task18 - https://github.com/radomir-radionov/node.js_way/tree/task18    
-task19 - https://github.com/radomir-radionov/node.js_way/tree/task19   
-task20 - https://github.com/radomir-radionov/node.js_way/tree/task20   
-task21 -   
-task22 -    
-task23 -  
-task24 -   
-task25 -  
-task26 -  
-task27 - 
+task11 - https://github.com/radomir-radionov/node.js_way/tree/task11 - eslint git husky
+task12 - https://github.com/radomir-radionov/node.js_way/tree/task12 - express  
+task13 - https://github.com/radomir-radionov/node.js_way/tree/task13 - mvc express koa  
+task14 - https://github.com/radomir-radionov/node.js_way/tree/task14 - validation 
+task15 - https://github.com/radomir-radionov/node.js_way/tree/task15 - протоколы общения 
+task16 - https://github.com/radomir-radionov/node.js_way/tree/task16 - ws socket io  
+task17 - https://github.com/radomir-radionov/node.js_way/tree/task17 - docker
+task18 - https://github.com/radomir-radionov/node.js_way/tree/task18 - db  
+task19 - https://github.com/radomir-radionov/node.js_way/tree/task19 - db -d compose  
+task20 - https://github.com/radomir-radionov/node.js_way/tree/task20 - acid 
+task21 - https://github.com/radomir-radionov/node.js_way/tree/task21 - orm redis  
+task22 - https://github.com/radomir-radionov/node.js_way/tree/task22 - redis   
+task23 - https://github.com/radomir-radionov/node.js_way/tree/task23 - graphql
+task24 - https://github.com/radomir-radionov/node.js_way/tree/task24 - nginx  
+task25 - https://github.com/radomir-radionov/node.js_way/tree/task25 - logging
+task26 - https://github.com/radomir-radionov/node.js_way/tree/task26 - rabbitmq
+task27 - https://github.com/radomir-radionov/node.js_way/tree/task27 - swagger
+task28 - https://github.com/radomir-radionov/node.js_way/tree/task28 - moleculer.js
+task29 - https://github.com/radomir-radionov/node.js_way/tree/task20 
