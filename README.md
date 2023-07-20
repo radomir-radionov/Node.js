@@ -19,7 +19,7 @@ task15 - https://github.com/radomir-radionov/node.js_way/tree/task15 - прот�
 task16 - https://github.com/radomir-radionov/node.js_way/tree/task16 - ws socket io    
 task17 - https://github.com/radomir-radionov/node.js_way/tree/task17 - docker  
 task18 - https://github.com/radomir-radionov/node.js_way/tree/task18 - db    
-task19 - https://github.com/radomir-radionov/node.js_way/tree/task19 - db -d compose    
+task19 - https://github.com/radomir-radionov/node.js_way/tree/task19 - MongoDB   
 task20 - https://github.com/radomir-radionov/node.js_way/tree/task20 - acid   
 task21 - https://github.com/radomir-radionov/node.js_way/tree/task21 - orm redis   
 task22 - https://github.com/radomir-radionov/node.js_way/tree/task22 - redis     
