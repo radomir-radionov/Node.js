@@ -11,14 +11,14 @@
 37 - https://github.com/radomir-radionov/node.js_way/tree/task8  
 38 - https://github.com/radomir-radionov/node.js_way/tree/task9  
 39 - https://github.com/radomir-radionov/node.js_way/tree/task10  
-40-42 - https://github.com/radomir-radionov/node.js_way/tree/task11 - eslint git husky  
+40-42 - https://github.com/radomir-radionov/node.js_way/tree/task11 - linux(-)  
 43 - https://github.com/radomir-radionov/node.js_way/tree/task12 - eslint git husky     
 44-46 - https://github.com/radomir-radionov/node.js_way/tree/task13 - mvc express koa    
 47 - https://github.com/radomir-radionov/node.js_way/tree/task14 - протоколы общения   
 48 - https://github.com/radomir-radionov/node.js_way/tree/task15 - ws socketio   
 49 - https://github.com/radomir-radionov/node.js_way/tree/task16 - docker   
-50 - https://github.com/radomir-radionov/node.js_way/tree/task17 - db  
-51 - https://github.com/radomir-radionov/node.js_way/tree/task18 - db    
+50 - https://github.com/radomir-radionov/node.js_way/tree/task17 - db-1 
+51 - https://github.com/radomir-radionov/node.js_way/tree/task18 - db-2  
 -- - https://github.com/radomir-radionov/node.js_way/tree/task19 - MongoDB   
 52 - https://github.com/radomir-radionov/node.js_way/tree/task20 - acid   
 53 - https://github.com/radomir-radionov/node.js_way/tree/task21 - orm redis   
@@ -29,4 +29,4 @@
 59 - https://github.com/radomir-radionov/node.js_way/tree/task26 - swagger  
 60 - https://github.com/radomir-radionov/node.js_way/tree/task27 - mikro service problem  
 61 - https://github.com/radomir-radionov/node.js_way/tree/task28 - moleculer.js  
-task29 - https://github.com/radomir-radionov/node.js_way/tree/task20 
+61 - https://github.com/radomir-radionov/node.js_way/tree/task20 
