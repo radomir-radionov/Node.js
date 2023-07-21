@@ -17,8 +17,8 @@
 47 - https://github.com/radomir-radionov/node.js_way/tree/task14 - протоколы общения   
 48 - https://github.com/radomir-radionov/node.js_way/tree/task15 - ws socketio   
 49 - https://github.com/radomir-radionov/node.js_way/tree/task16 - docker   
-50 - https://github.com/radomir-radionov/node.js_way/tree/task17 - db-1 
-51 - https://github.com/radomir-radionov/node.js_way/tree/task18 - db-2  
+50 - https://github.com/radomir-radionov/node.js_way/tree/task17 - db-1   
+51 - https://github.com/radomir-radionov/node.js_way/tree/task18 - db-2    
 -- - https://github.com/radomir-radionov/node.js_way/tree/task19 - MongoDB   
 52 - https://github.com/radomir-radionov/node.js_way/tree/task20 - acid   
 53 - https://github.com/radomir-radionov/node.js_way/tree/task21 - orm redis   
