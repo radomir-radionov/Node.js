@@ -22,8 +22,8 @@ task18 - https://github.com/radomir-radionov/node.js_way/tree/task18 - db
 task19 - https://github.com/radomir-radionov/node.js_way/tree/task19 - MongoDB   
 task20 - https://github.com/radomir-radionov/node.js_way/tree/task20 - acid   
 task21 - https://github.com/radomir-radionov/node.js_way/tree/task21 - orm redis   
-task22 - https://github.com/radomir-radionov/node.js_way/tree/task22 - graphql(55)   
-task23 - https://github.com/radomir-radionov/node.js_way/tree/task23 - nginx(56)  
+55 - https://github.com/radomir-radionov/node.js_way/tree/task22 - graphql   
+56 - https://github.com/radomir-radionov/node.js_way/tree/task23 - nginx  
 task24 - https://github.com/radomir-radionov/node.js_way/tree/task24 - nginx   
 task25 - https://github.com/radomir-radionov/node.js_way/tree/task25 - logging  
 task26 - https://github.com/radomir-radionov/node.js_way/tree/task26 - rabbitmq  
